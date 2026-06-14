@@ -1,0 +1,53 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  repository-checks:
+    name: Repository checks
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Verify legal and project files
+        run: |
+          set -euo pipefail
+          required_files=(
+            LICENSE
+            README.md
+            CONTRIBUTING.md
+            COPYRIGHT.md
+            NOTICE
+            TRADEMARKS.md
+          )
+          for file in "${required_files[@]}"; do
+            test -f "$file" || { echo "Missing required file: $file"; exit 1; }
+          done
+          echo "All required files present."
+
+  markdown-lint:
+    name: Markdown lint
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check markdown files exist and are non-empty
+        run: |
+          set -euo pipefail
+          for file in README.md CONTRIBUTING.md COPYRIGHT.md TRADEMARKS.md; do
+            test -s "$file" || { echo "Empty or missing: $file"; exit 1; }
+          done
