@@ -1,0 +1,204 @@
+@import "tailwindcss";
+
+/* ============================================================
+   GYROERP DESIGN SYSTEM — CSS CUSTOM PROPERTIES
+   Brand: Red (#CC0000), Black (#000000), White (#FFFFFF)
+   ============================================================ */
+
+@layer base {
+  :root {
+    /* ── Brand Red ── */
+    --color-brand-50:  #FFF1F1;
+    --color-brand-100: #FFE0E0;
+    --color-brand-200: #FFBCBC;
+    --color-brand-300: #FF8585;
+    --color-brand-400: #FF4D4D;
+    --color-brand-500: #E52222;
+    --color-brand-600: #CC0000;
+    --color-brand-700: #A30000;
+    --color-brand-800: #800000;
+    --color-brand-900: #5C0000;
+
+    /* ── Brand Black / Neutral ── */
+    --color-neutral-50:  #F5F5F5;
+    --color-neutral-100: #E8E8E8;
+    --color-neutral-200: #D1D1D1;
+    --color-neutral-300: #A8A8A8;
+    --color-neutral-400: #6E6E6E;
+    --color-neutral-500: #404040;
+    --color-neutral-600: #2C2C2C;
+    --color-neutral-700: #1A1A1A;
+    --color-neutral-800: #0D0D0D;
+    --color-neutral-900: #000000;
+
+    /* ── Semantic ── */
+    --color-success:  #16A34A;
+    --color-success-light: #DCFCE7;
+    --color-warning:  #D97706;
+    --color-warning-light: #FEF3C7;
+    --color-danger:   var(--color-brand-700);
+    --color-danger-light: var(--color-brand-100);
+    --color-info:     #0369A1;
+    --color-info-light: #E0F2FE;
+
+    /* ── Surfaces (light mode) ── */
+    --color-bg:         #FFFFFF;
+    --color-bg-subtle:  #FAFAFA;
+    --color-bg-muted:   #F5F5F5;
+    --color-sidebar:    var(--color-neutral-900);
+    --color-sidebar-fg: #FFFFFF;
+    --color-navbar:     var(--color-neutral-800);
+    --color-navbar-fg:  #FFFFFF;
+
+    /* ── Text ── */
+    --color-text-primary:   var(--color-neutral-700);
+    --color-text-secondary: var(--color-neutral-400);
+    --color-text-disabled:  var(--color-neutral-300);
+    --color-text-inverse:   #FFFFFF;
+    --color-text-link:      var(--color-brand-600);
+    --color-text-link-hover:var(--color-brand-700);
+
+    /* ── Borders ── */
+    --color-border:         var(--color-neutral-200);
+    --color-border-strong:  var(--color-neutral-300);
+    --color-border-focus:   var(--color-brand-300);
+
+    /* ── Typography ── */
+    --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+    /* ── Radius ── */
+    --radius-sm:   2px;
+    --radius-base: 6px;
+    --radius-md:   8px;
+    --radius-lg:   12px;
+    --radius-full: 9999px;
+
+    /* ── Shadows ── */
+    --shadow-sm:   0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-base: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+    --shadow-md:   0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-lg:   0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --shadow-xl:   0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+
+    /* ── Transitions ── */
+    --transition-fast:   150ms ease;
+    --transition-base:   200ms ease;
+    --transition-slow:   300ms ease;
+
+    /* ── Sidebar ── */
+    --sidebar-width:          256px;
+    --sidebar-width-collapsed: 64px;
+  }
+
+  .dark {
+    --color-bg:         var(--color-neutral-900);
+    --color-bg-subtle:  var(--color-neutral-800);
+    --color-bg-muted:   var(--color-neutral-700);
+    --color-sidebar:    #000000;
+    --color-navbar:     var(--color-neutral-900);
+
+    --color-text-primary:   #FFFFFF;
+    --color-text-secondary: var(--color-neutral-300);
+    --color-text-disabled:  var(--color-neutral-500);
+
+    --color-border:        var(--color-neutral-600);
+    --color-border-strong: var(--color-neutral-500);
+  }
+
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    font-family: var(--font-sans);
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-text-primary);
+    line-height: 1.5;
+  }
+
+  code, kbd, samp, pre {
+    font-family: var(--font-mono);
+  }
+
+  /* Focus visible ring — all interactive elements */
+  :focus-visible {
+    outline: 2px solid var(--color-brand-500);
+    outline-offset: 2px;
+  }
+
+  /* Skip to content link (accessibility) */
+  .skip-link {
+    position: absolute;
+    top: -100%;
+    left: 1rem;
+    z-index: 9999;
+    padding: 0.5rem 1rem;
+    background: var(--color-brand-600);
+    color: #fff;
+    border-radius: var(--radius-base);
+    text-decoration: none;
+    font-weight: 500;
+  }
+  .skip-link:focus {
+    top: 1rem;
+  }
+
+  /* Scrollbar styling */
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: var(--color-bg-subtle); }
+  ::-webkit-scrollbar-thumb { background: var(--color-neutral-300); border-radius: var(--radius-full); }
+  ::-webkit-scrollbar-thumb:hover { background: var(--color-neutral-400); }
+}
+
+/* ── Tailwind v4 theme extension ── */
+@theme {
+  /* Map CSS variables to Tailwind utility tokens */
+  --color-brand-50:  var(--color-brand-50);
+  --color-brand-100: var(--color-brand-100);
+  --color-brand-200: var(--color-brand-200);
+  --color-brand-300: var(--color-brand-300);
+  --color-brand-400: var(--color-brand-400);
+  --color-brand-500: var(--color-brand-500);
+  --color-brand-600: var(--color-brand-600);
+  --color-brand-700: var(--color-brand-700);
+  --color-brand-800: var(--color-brand-800);
+  --color-brand-900: var(--color-brand-900);
+
+  --color-neutral-50:  var(--color-neutral-50);
+  --color-neutral-100: var(--color-neutral-100);
+  --color-neutral-200: var(--color-neutral-200);
+  --color-neutral-300: var(--color-neutral-300);
+  --color-neutral-400: var(--color-neutral-400);
+  --color-neutral-500: var(--color-neutral-500);
+  --color-neutral-600: var(--color-neutral-600);
+  --color-neutral-700: var(--color-neutral-700);
+  --color-neutral-800: var(--color-neutral-800);
+  --color-neutral-900: var(--color-neutral-900);
+
+  --color-success: var(--color-success);
+  --color-warning: var(--color-warning);
+  --color-danger:  var(--color-danger);
+  --color-info:    var(--color-info);
+
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+
+  --radius-sm:   var(--radius-sm);
+  --radius-base: var(--radius-base);
+  --radius-md:   var(--radius-md);
+  --radius-lg:   var(--radius-lg);
+  --radius-full: var(--radius-full);
+
+  --shadow-sm:   var(--shadow-sm);
+  --shadow-base: var(--shadow-base);
+  --shadow-md:   var(--shadow-md);
+  --shadow-lg:   var(--shadow-lg);
+  --shadow-xl:   var(--shadow-xl);
+}
