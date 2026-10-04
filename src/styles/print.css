@@ -1,0 +1,25 @@
+/* Print styles — used for payslips, invoices, purchase orders */
+@media print {
+  .no-print { display: none !important; }
+  .print-only { display: block !important; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-size: 11pt;
+    color: #000;
+    background: #fff;
+  }
+
+  @page {
+    margin: 20mm 15mm;
+    size: A4;
+  }
+
+  .page-break-before { page-break-before: always; }
+  .page-break-after  { page-break-after: always; }
+  .no-page-break     { page-break-inside: avoid; }
+
+  a { color: inherit; text-decoration: none; }
+  table { border-collapse: collapse; width: 100%; }
+  th, td { border: 1px solid #D1D1D1; padding: 6px 8px; }
+}
